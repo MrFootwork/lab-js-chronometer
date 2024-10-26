@@ -4,15 +4,28 @@ class Chronometer {
 		this.intervalId = null;
 	}
 
-	start(printTimeCallback) {}
+	start(printTimeCallback) {
+		this.intervalId = setInterval(() => {
+			this.currentTime++;
+			if (printTimeCallback) printTimeCallback();
+		}, 1000);
+	}
 
-	getMinutes() {}
+	getMinutes() {
+		return 3;
+	}
 
-	getSeconds() {}
+	getSeconds() {
+		return this.currentTime;
+	}
 
-	computeTwoDigitNumber(value) {}
+	computeTwoDigitNumber(value) {
+		return value.toString().padStart(2, '0');
+	}
 
-	stop() {}
+	stop() {
+		clearInterval(this.intervalId);
+	}
 
 	reset() {}
 
